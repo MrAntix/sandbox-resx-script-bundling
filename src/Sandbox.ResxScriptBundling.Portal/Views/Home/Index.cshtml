@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = AspResources.Home_Title;
+}
+
+<hgroup class="title">
+    <h1>@string.Format(AspResources.Home_Tag,CommonResources.Title)</h1>
+</hgroup>
+
+<code><pre>
+ 
+App.js    
+           
+;(function ($, resources) {
+
+    $(function() {
+
+        var $el = $("&lt;em&gt;")
+            .text(" - " + resources.app.HelloWorld)
+            .appendTo("h3:first");
+
+        var showNHide = function() {
+            $el
+                .fadeOut("slow")
+                .fadeIn({duration:"slow",complete:showNHide});
+        };
+
+        showNHide();
+
+    });
+
+})(jQuery, window.resources);
+
+</pre></code>

@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="@Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/bundles/css")
+    </head>
+    <body>
+        <header>
+            <div>
+                <ul class="language-selector">
+                    <li><a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), new {culture = "en"})">@CommonResources.English</a></li>
+                    <li><a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), new {culture = "de"})">@CommonResources.German</a></li>
+                    <li><a href="@Url.Action(ViewContext.RouteData.Values["action"].ToString(), new {culture = "fr"})">@CommonResources.French</a></li>
+                </ul>
+                <hgroup>
+                    <h2 class="site-title">@Html.ActionLink(@CommonResources.Title, "Index", "Home")</h2>
+                    <h3>@ViewBag.Title</h3>
+                </hgroup>
+                <nav>
+                    <ul id="menu">
+                        <li>@Html.ActionLink(AspResources.Home_Link, "Index", "Home")</li>
+                        <li>@Html.ActionLink(AspResources.About_Link, "About", "Home")</li>
+                        <li>@Html.ActionLink(AspResources.Contact_Link, "Contact", "Home")</li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div id="body">
+            <section class="main-content">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div>
+                <p>&copy; @DateTime.Now.Year - @CommonResources.CompanyName</p>
+            </div>
+        </footer>
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+        @Scripts.Render("~/bundles/local")
+        @Scripts.Render("~/bundles/app")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>
